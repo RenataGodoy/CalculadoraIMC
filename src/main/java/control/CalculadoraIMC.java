@@ -28,7 +28,7 @@ public class CalculadoraIMC {
         if (idade >= 20 && idade <= 65) {
             if (imc < 16.00) return "Baixo peso muito grave";
             if (imc >= 16.00 && imc < 17.0) return "Baixo peso grave";
-            if (imc >= 17.00 && imc < 19.0) return "Baixo peso";
+            if (imc >= 17.00 && imc < 18.5) return "Baixo peso";
             if (imc >= 18.50 && imc < 25.0) return "Peso normal";
             if (imc >= 25.00 && imc < 30.0) return "Sobrepeso";
             if (imc >= 30.00 && imc < 35.0) return "Obesidade grau I";
@@ -52,7 +52,7 @@ public class CalculadoraIMC {
                 if (imc >= 27.0 && imc < 30.00) return "Sobrepeso";
                 if (imc >= 30.0 && imc < 35.00) return "Obesidade grau I";
                 if (imc >= 35.0 && imc < 40.0) return "Obesidade grau II";
-                if (imc > 40.00) return "Obesidade grau III (mórbida)";
+                if (imc >= 40.00) return "Obesidade grau III (mórbida)";
             }
         }
 

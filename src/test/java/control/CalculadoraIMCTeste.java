@@ -1,5 +1,6 @@
 package control;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +12,9 @@ public class CalculadoraIMCTeste {
     public void setup() {
         calcImc = new CalculadoraIMC();
     }
+
+    @After
+    public void teardown() {calcImc = null;}
 //////////////////////////////////////ADULTO//////////////////////////////////////////////////////////////////////////////
     // Baixo peso muito grave - abaixo de 16 - check
     @Test
@@ -22,8 +26,8 @@ public class CalculadoraIMCTeste {
     // Baixo peso grave - 16 - 16,99 - check
     @Test
     public void testeAdultoBaixoPesoGraveInferior() {
-        Assert.assertEquals("Baixo peso grave", calcImc.calcularImc(49, 1.751, 30, "feminino"));
-        // RESULTADO ESPERADO 15.98
+        Assert.assertEquals("Baixo peso grave", calcImc.calcularImc(49, 1.75, 30, "feminino"));
+        // RESULTADO ESPERADO 16.0
     }
     @Test
     public void testeAdultoBaixoPesoGraveSuperior() {
@@ -46,8 +50,8 @@ public class CalculadoraIMCTeste {
     // Peso normal - 18,50 - 24,99  - check
     @Test
     public void testeAdultoPesoNormalInferior() {
-        Assert.assertEquals("Peso normal", calcImc.calcularImc(55, 1.72, 40, "feminino"));
-        // RESULTADO ESPERADO 18.59
+        Assert.assertEquals("Peso normal", calcImc.calcularImc(55.37, 1.73, 40, "feminino"));
+        // RESULTADO ESPERADO 18.5
     }
     @Test
     public void testeAdultoPesoNormalSuperior() {
@@ -75,16 +79,27 @@ public class CalculadoraIMCTeste {
     }
     @Test
     public void testeAdultoObesidadeGrauISuperior() {
-        Assert.assertEquals("Obesidade grau I", calcImc.calcularImc(89, 1.60, 39, "masculino"));
+        Assert.assertEquals("Obesidade grau I", calcImc.calcularImc(89.6, 1.60, 39, "masculino"));
         // RESULTADO ESPERADO 34.77
     }
 
-    // Obesidade grau II - maior q 40
+    // Obesidade grau II - 35 - 39.9
     @Test
-    public void testeAdultoObesidadeGrauII() {
-        Assert.assertEquals("Obesidade grau I", calcImc.calcularImc(103, 1.6, 45, "feminino"));
-        // RESULTADO ESPERADO 40.23
+    public void testeAdultoObesidadeGrauIIInferior() {
+        Assert.assertEquals("Obesidade grau II", calcImc.calcularImc(89.61, 1.6, 45, "feminino"));
+        // RESULTADO ESPERADO 35
+    }
+    @Test
+    public void testeAdultoObesidadeGrauIISuperior() {
+        Assert.assertEquals("Obesidade grau II", calcImc.calcularImc(102.4, 1.6, 45, "feminino"));
+        // RESULTADO ESPERADO 39.9
+    }
 
+    // Obesidade grau III - maior que 40
+    @Test
+    public void testeAdultoObesidadeGrauIII() {
+        Assert.assertEquals("Obesidade grau III (mórbida)", calcImc.calcularImc(102.5, 1.6, 45, "feminino"));
+        // RESULTADO ESPERADO 40
     }
 
 //////////////////////////////////////IDOSOS MULHERES 65+//////////////////////////////////////////
@@ -98,12 +113,12 @@ public class CalculadoraIMCTeste {
     // Peso normal - 22 a 27
     @Test
     public void testeIdosaPesoNormalInferior() {
-        Assert.assertEquals("Peso normal", calcImc.calcularImc(56, 1.65, 70, "feminino"));
+        Assert.assertEquals("Peso normal", calcImc.calcularImc(59.89, 1.65, 70, "feminino"));
         // RESULTADO ESPERADO 22.2
     }
     @Test
     public void testeIdosaPesoNormalSuperior() {
-        Assert.assertEquals("Peso normal", calcImc.calcularImc(72, 1.60, 75, "feminino"));
+        Assert.assertEquals("Peso normal", calcImc.calcularImc(68.6, 1.60, 75, "feminino"));
         // RESULTADO ESPERADO 26.8
     }
 
@@ -115,7 +130,7 @@ public class CalculadoraIMCTeste {
     }
     @Test
     public void testeIdosaSobrepesoSuperior() {
-        Assert.assertEquals("Sobrepeso", calcImc.calcularImc(88, 1.62, 80, "feminino"));
+        Assert.assertEquals("Sobrepeso", calcImc.calcularImc(83.9, 1.62, 80, "feminino"));
         // RESULTADO ESPERADO 32.0
     }
 
@@ -127,27 +142,27 @@ public class CalculadoraIMCTeste {
     }
     @Test
     public void testeIdosaObesidadeGrauISuperior() {
-        Assert.assertEquals("Obesidade grau I", calcImc.calcularImc(100, 1.55, 80, "feminino"));
+        Assert.assertEquals("Obesidade grau I", calcImc.calcularImc(88.89, 1.55, 80, "feminino"));
         // RESULTADO ESPERADO 37.0
     }
 
     // Obesidade grau II - 37,1 a 41,9
     @Test
     public void testeIdosaObesidadeGrauIIInferior() {
-        Assert.assertEquals("Obesidade grau II", calcImc.calcularImc(110, 1.55, 85, "feminino"));
-        // RESULTADO ESPERADO 39.6
+        Assert.assertEquals("Obesidade grau II", calcImc.calcularImc(89.13, 1.55, 85, "feminino"));
+        // RESULTADO ESPERADO 37.1
     }
     @Test
     public void testeIdosaObesidadeGrauIISuperior() {
-        Assert.assertEquals("Obesidade grau II", calcImc.calcularImc(110, 1.55, 85, "feminino"));
-        // RESULTADO ESPERADO 39.6
+        Assert.assertEquals("Obesidade grau II", calcImc.calcularImc(100.66, 1.55, 85, "feminino"));
+        // RESULTADO ESPERADO 41.9
     }
 
     // Obesidade grau III - acima de 42
     @Test
     public void testeIdosaObesidadeGrauIII() {
-        Assert.assertEquals("Obesidade grau III", calcImc.calcularImc(120, 1.55, 85, "feminino"));
-        // RESULTADO ESPERADO 49.8
+        Assert.assertEquals("Obesidade grau III (mórbida)", calcImc.calcularImc(101.14, 1.55, 85, "feminino"));
+        // RESULTADO ESPERADO 42.1
     }
 
 //////////////////////////////////////IDOSOS HOMENS 65+//////////////////////////////////////////
@@ -191,8 +206,8 @@ public class CalculadoraIMCTeste {
     }
     @Test
     public void testeIdosoObesidadeGrauISuperior() {
-        Assert.assertEquals("Obesidade grau I", calcImc.calcularImc(91, 1.61, 90, "masculino"));
-        // RESULTADO ESPERADO 35.11
+        Assert.assertEquals("Obesidade grau I", calcImc.calcularImc(90.7, 1.61, 90, "masculino"));
+        // RESULTADO ESPERADO 35
     }
 
     // Obesidade grau II - 35,1 a 39,9  - check
@@ -203,15 +218,15 @@ public class CalculadoraIMCTeste {
     }
     @Test
     public void testeIdosoObesidadeGrauIISuperior() {
-        Assert.assertEquals("Obesidade grau II", calcImc.calcularImc(115, 1.70, 90, "masculino"));
+        Assert.assertEquals("Obesidade grau II", calcImc.calcularImc(115.5, 1.70, 90, "masculino"));
         // RESULTADO ESPERADO 39.79
     }
 
     // Obesidade grau III - acima de 40 - check
     @Test
     public void testeIdosoObesidadeGrauIII() {
-        Assert.assertEquals("Obesidade grau III", calcImc.calcularImc(120, 1.70, 90, "masculino"));
-        // RESULTADO ESPERADO 41.52
+        Assert.assertEquals("Obesidade grau III (mórbida)", calcImc.calcularImc(115.6, 1.70, 90, "masculino"));
+        // RESULTADO ESPERADO 40
     }
 
 //////////////////////////////////////CRIANCAS//////////////////////////////////////////
