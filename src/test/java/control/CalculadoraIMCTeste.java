@@ -248,7 +248,7 @@ public class CalculadoraIMCTeste {
 
     @Test
     public void criancaMeninoPesoNormalIdade4() {
-        Assert.assertEquals("Peso normal", calcImc.calcularImc(17.0, 1.0, 4, "masculino")) ;
+        Assert.assertEquals("Peso normal", calcImc.calcularImc(16.9, 1.0, 4, "masculino")) ;
         // IMC = 17.0
     }
 
@@ -363,50 +363,50 @@ public class CalculadoraIMCTeste {
 //////////////////////////////////////MENINAS//////////////////////////////////////////
     @Test
     public void criancaMeninaBaixoPesoIdade2() {
-        Assert.assertEquals("Baixo peso", calcImc.calcularImc(14.3, 0.85, 2, "feminino")) ;
-        // IMC = 14.3
+        Assert.assertEquals("Baixo peso", calcImc.calcularImc(10.4, 0.85, 2, "feminino")) ;
+        // IMC < 14.4
     }
 
     @Test
     public void criancaMeninaPesoNormalIdade2() {
-        Assert.assertEquals("Peso normal", calcImc.calcularImc(17.9, 0.85, 2, "feminino")) ;
-        // IMC = 17.9
+        Assert.assertEquals("Peso normal", calcImc.calcularImc(13, 0.85, 2, "feminino")) ;
+        // IMC = 18
     }
 
     @Test
     public void criancaMeninaSobrepesoIdade2() {
-        Assert.assertEquals("Sobrepeso", calcImc.calcularImc(18.9, 0.85, 2, "feminino")) ;
-        // IMC = 18.9
+        Assert.assertEquals("Sobrepeso", calcImc.calcularImc(13.72, 0.85, 2, "feminino")) ;
+        // IMC = 19
     }
 
     @Test
     public void criancaMeninaObesoIdade2() {
-        Assert.assertEquals("Obeso", calcImc.calcularImc(19.2, 0.85, 2, "feminino")) ;
-        // IMC = 19.2
+        Assert.assertEquals("Obeso", calcImc.calcularImc(13.73, 0.85, 2, "feminino")) ;
+        // IMC > 19
     }
 
     @Test
     public void criancaMeninaBaixoPesoIdade4() {
-        Assert.assertEquals("Baixo peso", calcImc.calcularImc(13.7, 1.05, 4, "feminino")) ;
-        // IMC = 13.7
+        Assert.assertEquals("Baixo peso", calcImc.calcularImc(15.21, 1.05, 4, "feminino")) ;
+        // IMC < 13.8
     }
 
     @Test
     public void criancaMeninaPesoNormalIdade4() {
-        Assert.assertEquals("Peso normal", calcImc.calcularImc(16.7, 1.05, 4, "feminino")) ;
-        // IMC = 16.7
+        Assert.assertEquals("Peso normal", calcImc.calcularImc(18.52, 1.05, 4, "feminino")) ;
+        // IMC = 16.8
     }
 
     @Test
     public void criancaMeninaSobrepesoIdade4() {
-        Assert.assertEquals("Sobrepeso", calcImc.calcularImc(18.0, 1.05, 4, "feminino")) ;
-        // IMC = 18.0
+        Assert.assertEquals("Sobrepeso", calcImc.calcularImc(19.95, 1.05, 4, "feminino")) ;
+        // IMC = 18.1
     }
 
     @Test
     public void criancaMeninaObesoIdade4() {
-        Assert.assertEquals("Obeso", calcImc.calcularImc(18.3, 1.05, 4, "feminino")) ;
-        // IMC = 18.3
+        Assert.assertEquals("Obeso", calcImc.calcularImc(19.96, 1.05, 4, "feminino")) ;
+        // IMC > 18.1
     }
 
     @Test
@@ -423,13 +423,13 @@ public class CalculadoraIMCTeste {
 
     @Test
     public void criancaMeninaSobrepesoIdade6() {
-        Assert.assertEquals("Sobrepeso", calcImc.calcularImc(22.7, 1.10, 6, "feminino")) ;
+        Assert.assertEquals("Sobrepeso", calcImc.calcularImc(22.74, 1.10, 6, "feminino")) ;
         // IMC = 18.8
     }
 
     @Test
     public void criancaMeninaObesoIdade6() {
-        Assert.assertEquals("Obeso", calcImc.calcularImc(22.74, 1.10, 6, "feminino")) ;
+        Assert.assertEquals("Obeso", calcImc.calcularImc(22.75, 1.10, 6, "feminino")) ;
         // IMC > 18.8
     }
 
